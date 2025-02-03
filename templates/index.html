@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Subida y Conversión de Video CTV</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .field-group { margin-bottom: 1em; }
+    label { display: block; margin-bottom: 0.5em; }
+  </style>
+  <script>
+    function toggleFields() {
+      var interactivity = document.getElementById("interactivity").value;
+      document.getElementById("in_video_fields").style.display = (interactivity === "in_video") ? "block" : "none";
+      document.getElementById("trivia_fields").style.display = (interactivity === "trivia") ? "block" : "none";
+      document.getElementById("qr_scan_fields").style.display = (interactivity === "qr_scan") ? "block" : "none";
+    }
+    window.onload = toggleFields;
+  </script>
+</head>
+<body>
+  <h1>Conversión de Video y Generación de VAST</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <div class="field-group">
+      <label for="video_file">Subir Video:</label>
+      <input type="file" id="video_file" name="video_file" required>
+    </div>
+    <div class="field-group">
+      <label for="interactivity">Tipo de Interactividad:</label>
+      <select id="interactivity" name="interactivity" onchange="toggleFields()">
+        <option value="in_video">In-Video (Botón clickeable)</option>
+        <option value="trivia">Trivia (Anuncio gamificado)</option>
+        <option value="qr_scan">QR Scan</option>
+      </select>
+    </div>
+
+    <!-- Campos para In-Video -->
+    <div id="in_video_fields" style="display:none;">
+      <h3>Parámetros In-Video</h3>
+      <div class="field-group">
+        <label for="button_text">Texto del Botón:</label>
+        <input type="text" id="button_text" name="button_text">
+      </div>
+      <div class="field-group">
+        <label for="button_color">Color del Botón:</label>
+        <input type="text" id="button_color" name="button_color" placeholder="#FFFFFF">
+      </div>
+      <div class="field-group">
+        <label for="button_url">URL de Destino:</label>
+        <input type="url" id="button_url" name="button_url">
+      </div>
+    </div>
+
+    <!-- Campos para Trivia -->
+    <div id="trivia_fields" style="display:none;">
+      <h3>Parámetros Trivia</h3>
+      <div class="field-group">
+        <label for="question">Pregunta:</label>
+        <input type="text" id="question" name="question">
+      </div>
+      <div class="field-group">
+        <label for="option1_text">Opción 1 - Texto:</label>
+        <input type="text" id="option1_text" name="option1_text">
+      </div>
+      <div class="field-group">
+        <label for="option1_url">Opción 1 - URL:</label>
+        <input type="url" id="option1_url" name="option1_url">
+      </div>
+      <div class="field-group">
+        <label for="option2_text">Opción 2 - Texto:</label>
+        <input type="text" id="option2_text" name="option2_text">
+      </div>
+      <div class="field-group">
+        <label for="option2_url">Opción 2 - URL:</label>
+        <input type="url" id="option2_url" name="option2_url">
+      </div>
+    </div>
+
+    <!-- Campos para QR Scan -->
+    <div id="qr_scan_fields" style="display:none;">
+      <h3>Parámetros QR Scan</h3>
+      <div class="field-group">
+        <label for="qr_url">URL Asociada al QR:</label>
+        <input type="url" id="qr_url" name="qr_url">
+      </div>
+      <div class="field-group">
+        <label for="qr_size">Tamaño del QR (px):</label>
+        <input type="text" id="qr_size" name="qr_size">
+      </div>
+      <div class="field-group">
+        <label for="qr_position">Posición (ej: top-left, bottom-right):</label>
+        <input type="text" id="qr_position" name="qr_position">
+      </div>
+    </div>
+
+    <button type="submit">Procesar Video y Generar VAST</button>
+  </form>
+</body>
+</html>

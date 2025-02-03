@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado de la Conversión</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    a { display: block; margin-bottom: 0.5em; }
+  </style>
+</head>
+<body>
+  <h1>Proceso Completado</h1>
+  <p>Descarga el archivo VAST generado:</p>
+  <a href="{{ vast_file_url }}" download>{{ vast_file_url }}</a>
+  <h2>Archivos de Video Generados:</h2>
+  {% for platform, filepath in media_files.items() %}
+    <a href="/exports/{{ filepath.split('/')[-1] }}" download>{{ platform }}: {{ filepath.split('/')[-1] }}</a>
+  {% endfor %}
+  <br>
+  <a href="/">Volver</a>
+</body>
+</html>
