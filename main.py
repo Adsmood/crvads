@@ -93,8 +93,9 @@ async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-if __name__ == "__main__":
-    import uvicorn
-    # Cambiar el puerto a la variable de entorno asignada por Render
-    port = int(os.environ.get("PORT", 8000))  # Usa el puerto dinámico de Render
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+
+if __name__ == "__main__": 
+    import uvicorn 
+    port = int(os.environ.get("PORT", 8000)) 
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
