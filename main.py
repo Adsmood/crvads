@@ -30,6 +30,21 @@ async def index(request: Request):
     """Renderiza la página principal con el formulario."""
     return templates.TemplateResponse("index.html", {"request": request})
 
+# Endpoint para subir archivos
+@app.post("/upload")
+async def upload_video(video_file: UploadFile = File(...)):
+    """Sube un archivo al servidor y lo guarda en la carpeta 'uploads'."""
+    filename = video_file.filename
+    upload_path = os.path.join(UPLOAD_DIR, filename)
+
+    # Guardar el archivo subido por fragmentos
+    async with aiofiles.open(upload_path, "wb") as out_file:
+        while content := await video_file.read(1024 * 1024):  # Leer en fragmentos de 1MB
+            await out_file.write(content)
+
+    logger.info(f"Archivo subido: {upload_path}")
+    return {"message": "Archivo subido correctamente", "path": f"/uploads/{filename}"}
+
 # Endpoint para subir y descargar el archivo generado
 @app.post("/process_and_download")
 async def process_and_download(video_file: UploadFile = File(...)):
