@@ -127,8 +127,10 @@ async def process_and_download(
     logger.info(f"Archivo VAST generado: {vast_filepath}")
 
     # Descargar el archivo VAST generado
-    return FileResponse(path=vast_filepath, filename=vast_filename, media_type="application/xml")
-
+    return JSONResponse({
+        "vast_url": f"/exports/{vast_filename}",
+        "media_files": [f"/exports/{os.path.basename(path)}" for path in media_files.values()]
+    })
 
 # Punto de entrada para ejecutar la aplicación
 if __name__ == "__main__":
