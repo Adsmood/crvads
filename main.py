@@ -1,7 +1,3 @@
-He modificado el archivo `main.py` para implementar la subida de archivos en fragmentos utilizando `aiofiles`. El resto del archivo se ha mantenido igual.
-
-Aquí tienes el código modificado:
-
 ```python
 import os
 import logging
