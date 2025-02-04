@@ -3,7 +3,7 @@ import logging
 import shutil
 from datetime import datetime
 from fastapi import FastAPI, Request, UploadFile, File, Form
-from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse
 import aiofiles
 from fastapi.templating import Jinja2Templates
 
@@ -11,17 +11,17 @@ from fastapi.templating import Jinja2Templates
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("CTVConversionApp")
 
-# Directorios para guardar archivos subidos y exportados
-UPLOAD_DIR = "uploads"
-EXPORT_DIR = "exports"
+# Obtener la ruta base del proyecto y definir directorios absolutos
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_DIR = os.path.join(BASE_DIR, "uploads")
+EXPORT_DIR = os.path.join(BASE_DIR, "exports")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(EXPORT_DIR, exist_ok=True)
 
-# Usar ruta absoluta para la carpeta de plantillas
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Configurar las plantillas usando la ruta absoluta
 templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
-# Inicialización de la aplicación
+# Inicialización de la aplicación FastAPI
 app = FastAPI(title="WebApp de Conversión y VAST Interactivo")
 
 # Parámetros de conversión por cada plataforma
@@ -144,7 +144,7 @@ def generate_vast_xml(media_files: dict, button_text: str, button_color: str, bu
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-# Endpoint para procesar el video y generar el archivo VAST
+# Endpoint para procesar el video, generar archivos exportados y descargar el archivo VAST
 @app.post("/process_and_download")
 async def process_and_download(
     video_file: UploadFile = File(...),
@@ -152,15 +152,15 @@ async def process_and_download(
     button_color: str = Form(...),
     button_url: str = Form(...),
 ):
-    # Guardar el archivo subido en fragmentos (para evitar problemas con archivos grandes)
+    # Guardar el archivo subido en fragmentos (para archivos grandes)
     filename = video_file.filename
     upload_path = os.path.join(UPLOAD_DIR, filename)
     async with aiofiles.open(upload_path, "wb") as out_file:
-        while content := await video_file.read(1024 * 1024):  # Leer en fragmentos de 1MB
+        while content := await video_file.read(1024 * 1024):
             await out_file.write(content)
     logger.info(f"Archivo subido y guardado en: {upload_path}")
 
-    # Simular la generación de archivos exportados para cada plataforma (aquí solo copiamos el archivo)
+    # Simular la generación de archivos exportados para cada plataforma (en este ejemplo, copiamos el archivo)
     media_files = {}
     for platform, params in PLATFORMS.items():
         output_filename = f"{os.path.splitext(filename)[0]}_{platform}.{params['container']}"
@@ -182,11 +182,12 @@ async def process_and_download(
         await vast_file.write(vast_content)
     logger.info(f"Archivo VAST generado: {vast_filepath}")
 
-    # Responder con un JSON que contiene las URLs de los archivos generados
-    return JSONResponse({
-        "vast_url": f"/exports/{vast_filename}",
-        "media_files": [f"/exports/{os.path.basename(path)}" for path in media_files.values()]
-    })
+    # Retornar el archivo VAST como FileResponse para forzar la descarga
+    return FileResponse(
+        path=vast_filepath,
+        filename=vast_filename,
+        media_type="application/xml"
+    )
 
 # Punto de entrada para ejecutar la aplicación
 if __name__ == "__main__":
