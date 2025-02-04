@@ -3,9 +3,10 @@ import logging
 import shutil
 from datetime import datetime
 from fastapi import FastAPI, Request, UploadFile, File, Form
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
 import aiofiles
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO)
@@ -23,6 +24,10 @@ templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
 # Inicialización de la aplicación FastAPI
 app = FastAPI(title="WebApp de Conversión y VAST Interactivo")
+
+# Montar las carpetas estáticas para que los archivos se puedan servir vía URL
+app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+app.mount("/exports", StaticFiles(directory=EXPORT_DIR), name="exports")
 
 # Parámetros de conversión por cada plataforma
 PLATFORMS = {
