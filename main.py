@@ -1,10 +1,11 @@
 import os
 import logging
-from datetime import datetime
-from fastapi import FastAPI, UploadFile, File, Form
-from fastapi.responses import FileResponse, JSONResponse
-import aiofiles
 import shutil
+from datetime import datetime
+from fastapi import FastAPI, Request, UploadFile, File, Form
+from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
+import aiofiles
+from fastapi.templating import Jinja2Templates
 
 # Configuración de logging
 logging.basicConfig(level=logging.INFO)
@@ -16,18 +17,71 @@ EXPORT_DIR = "exports"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(EXPORT_DIR, exist_ok=True)
 
+# Usar ruta absoluta para la carpeta de plantillas
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
+
 # Inicialización de la aplicación
 app = FastAPI(title="WebApp de Conversión y VAST Interactivo")
 
 # Parámetros de conversión por cada plataforma
 PLATFORMS = {
-    "roku": {"codec": "libx264", "resolution": "1920x1080", "bitrate": "1500k", "container": "mp4", "sdk_vendor": "roku", "sdk_url": "https://sdk.roku.com/raf.js"},
-    "firetv": {"codec": "libx264", "resolution": "1280x720", "bitrate": "1200k", "container": "mp4", "sdk_vendor": "amazon", "sdk_url": "https://aps.amazon.com/sdk.js"},
-    "appletv": {"codec": "libx264", "resolution": "1920x1080", "bitrate": "2000k", "container": "mov", "sdk_vendor": "apple", "sdk_url": "https://ads.apple.com/tvos-sdk.js"},
-    "androidtv": {"codec": "libx264", "resolution": "1280x720", "bitrate": "1200k", "container": "mp4", "sdk_vendor": "amazon", "sdk_url": "https://aps.amazon.com/sdk.js"},
-    "samsung": {"codec": "libx265", "resolution": "1920x1080", "bitrate": "1800k", "container": "mp4", "sdk_vendor": "samsung", "sdk_url": "https://ads.samsung.com/sdk.js"},
-    "lg": {"codec": "libx264", "resolution": "1920x1080", "bitrate": "1800k", "container": "mp4", "sdk_vendor": "lg", "sdk_url": "https://ads.lg.com/webos-sdk.js"},
-    "vizio": {"codec": "libx265", "resolution": "1920x1080", "bitrate": "2000k", "container": "mp4", "sdk_vendor": "vizio", "sdk_url": "https://ads.vizio.com/sdk.js"},
+    "roku": {
+        "codec": "libx264",
+        "resolution": "1920x1080",
+        "bitrate": "1500k",
+        "container": "mp4",
+        "sdk_vendor": "roku",
+        "sdk_url": "https://sdk.roku.com/raf.js"
+    },
+    "firetv": {
+        "codec": "libx264",
+        "resolution": "1280x720",
+        "bitrate": "1200k",
+        "container": "mp4",
+        "sdk_vendor": "amazon",
+        "sdk_url": "https://aps.amazon.com/sdk.js"
+    },
+    "appletv": {
+        "codec": "libx264",
+        "resolution": "1920x1080",
+        "bitrate": "2000k",
+        "container": "mov",
+        "sdk_vendor": "apple",
+        "sdk_url": "https://ads.apple.com/tvos-sdk.js"
+    },
+    "androidtv": {
+        "codec": "libx264",
+        "resolution": "1280x720",
+        "bitrate": "1200k",
+        "container": "mp4",
+        "sdk_vendor": "amazon",
+        "sdk_url": "https://aps.amazon.com/sdk.js"
+    },
+    "samsung": {
+        "codec": "libx265",
+        "resolution": "1920x1080",
+        "bitrate": "1800k",
+        "container": "mp4",
+        "sdk_vendor": "samsung",
+        "sdk_url": "https://ads.samsung.com/sdk.js"
+    },
+    "lg": {
+        "codec": "libx264",
+        "resolution": "1920x1080",
+        "bitrate": "1800k",
+        "container": "mp4",
+        "sdk_vendor": "lg",
+        "sdk_url": "https://ads.lg.com/webos-sdk.js"
+    },
+    "vizio": {
+        "codec": "libx265",
+        "resolution": "1920x1080",
+        "bitrate": "2000k",
+        "container": "mp4",
+        "sdk_vendor": "vizio",
+        "sdk_url": "https://ads.vizio.com/sdk.js"
+    },
 }
 
 # Función para generar el contenido del archivo VAST
@@ -57,7 +111,6 @@ def generate_vast_xml(media_files: dict, button_text: str, button_color: str, bu
         vast_parts.append(
             f'              <MediaFile delivery="progressive" type="{mime}" width="{width}" height="{height}"><![CDATA[/exports/{os.path.basename(filepath)}]]></MediaFile>'
         )
-
     vast_parts.extend([
         '            </MediaFiles>',
         '          </Linear>',
@@ -86,6 +139,12 @@ def generate_vast_xml(media_files: dict, button_text: str, button_color: str, bu
     ])
     return "\n".join(vast_parts)
 
+# Endpoint para renderizar la página principal (index.html)
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+# Endpoint para procesar el video y generar el archivo VAST
 @app.post("/process_and_download")
 async def process_and_download(
     video_file: UploadFile = File(...),
@@ -93,22 +152,20 @@ async def process_and_download(
     button_color: str = Form(...),
     button_url: str = Form(...),
 ):
-    """Procesa el video y genera los formatos exportados junto con el archivo VAST."""
-    # Guardar el archivo subido
+    # Guardar el archivo subido en fragmentos (para evitar problemas con archivos grandes)
     filename = video_file.filename
     upload_path = os.path.join(UPLOAD_DIR, filename)
     async with aiofiles.open(upload_path, "wb") as out_file:
-        while content := await video_file.read(1024 * 1024):
+        while content := await video_file.read(1024 * 1024):  # Leer en fragmentos de 1MB
             await out_file.write(content)
-
     logger.info(f"Archivo subido y guardado en: {upload_path}")
 
-    # Simulación de generación de archivos exportados por plataforma
+    # Simular la generación de archivos exportados para cada plataforma (aquí solo copiamos el archivo)
     media_files = {}
     for platform, params in PLATFORMS.items():
         output_filename = f"{os.path.splitext(filename)[0]}_{platform}.{params['container']}"
         output_filepath = os.path.join(EXPORT_DIR, output_filename)
-        shutil.copy(upload_path, output_filepath)  # Simula una conversión
+        shutil.copy(upload_path, output_filepath)
         media_files[platform] = output_filepath
         logger.info(f"Archivo exportado: {output_filepath}")
 
@@ -123,10 +180,9 @@ async def process_and_download(
     vast_filepath = os.path.join(EXPORT_DIR, vast_filename)
     async with aiofiles.open(vast_filepath, "w", encoding="utf-8") as vast_file:
         await vast_file.write(vast_content)
-
     logger.info(f"Archivo VAST generado: {vast_filepath}")
 
-    # Descargar el archivo VAST generado
+    # Responder con un JSON que contiene las URLs de los archivos generados
     return JSONResponse({
         "vast_url": f"/exports/{vast_filename}",
         "media_files": [f"/exports/{os.path.basename(path)}" for path in media_files.values()]
