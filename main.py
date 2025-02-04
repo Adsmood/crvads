@@ -1,10 +1,8 @@
 import os
 import logging
 from datetime import datetime
-from fastapi import FastAPI, Request, UploadFile, File
-from fastapi.responses import FileResponse, HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI, UploadFile, File, Form
+from fastapi.responses import FileResponse, JSONResponse
 import aiofiles
 import shutil
 
@@ -18,13 +16,8 @@ EXPORT_DIR = "exports"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(EXPORT_DIR, exist_ok=True)
 
-# Inicialización de la aplicación y configuración de plantillas
+# Inicialización de la aplicación
 app = FastAPI(title="WebApp de Conversión y VAST Interactivo")
-templates = Jinja2Templates(directory="templates")
-
-# Montar las carpetas estáticas
-app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
-app.mount("/exports", StaticFiles(directory=EXPORT_DIR), name="exports")
 
 # Parámetros de conversión por cada plataforma
 PLATFORMS = {
@@ -93,15 +86,13 @@ def generate_vast_xml(media_files: dict, button_text: str, button_color: str, bu
     ])
     return "\n".join(vast_parts)
 
-# Página principal
-@app.get("/", response_class=HTMLResponse)
-async def index(request: Request):
-    """Renderiza la página principal con el formulario."""
-    return templates.TemplateResponse("index.html", {"request": request})
-
-# Endpoint para procesar y descargar el archivo generado
 @app.post("/process_and_download")
-async def process_and_download(video_file: UploadFile = File(...)):
+async def process_and_download(
+    video_file: UploadFile = File(...),
+    button_text: str = Form(...),
+    button_color: str = Form(...),
+    button_url: str = Form(...),
+):
     """Procesa el video y genera los formatos exportados junto con el archivo VAST."""
     # Guardar el archivo subido
     filename = video_file.filename
@@ -124,9 +115,9 @@ async def process_and_download(video_file: UploadFile = File(...)):
     # Generar el archivo VAST
     vast_content = generate_vast_xml(
         media_files=media_files,
-        button_text="Watch Now",
-        button_color="#ff5733",
-        button_url="https://www.netflix.com/ar/title/81068725"
+        button_text=button_text,
+        button_color=button_color,
+        button_url=button_url,
     )
     vast_filename = f"{os.path.splitext(filename)[0]}_vast.xml"
     vast_filepath = os.path.join(EXPORT_DIR, vast_filename)
@@ -138,8 +129,9 @@ async def process_and_download(video_file: UploadFile = File(...)):
     # Descargar el archivo VAST generado
     return FileResponse(path=vast_filepath, filename=vast_filename, media_type="application/xml")
 
+
 # Punto de entrada para ejecutar la aplicación
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8000))  # Puerto dinámico en Render
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
