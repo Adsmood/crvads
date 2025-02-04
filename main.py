@@ -1,6 +1,7 @@
 import os
 import logging
 import shutil
+import zipfile
 from datetime import datetime
 from fastapi import FastAPI, Request, UploadFile, File, Form
 from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
@@ -92,6 +93,8 @@ PLATFORMS = {
 # Función para generar el contenido del archivo VAST
 def generate_vast_xml(media_files: dict, button_text: str, button_color: str, button_url: str) -> str:
     ad_id = datetime.now().strftime("%Y%m%d%H%M%S")
+    # Define la URL base de tu servidor (modifícala si es necesario)
+    base_url = "https://crvads.onrender.com"
     vast_parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<VAST version="4.2" xmlns="http://www.iab.com/VAST">',
@@ -113,8 +116,10 @@ def generate_vast_xml(media_files: dict, button_text: str, button_color: str, bu
         params = PLATFORMS[platform]
         mime = "video/quicktime" if params["container"] == "mov" else "video/mp4"
         width, height = params["resolution"].split("x")
+        # Construir la URL absoluta para el archivo de video
+        absolute_url = f"{base_url}/exports/{os.path.basename(filepath)}"
         vast_parts.append(
-            f'              <MediaFile delivery="progressive" type="{mime}" width="{width}" height="{height}"><![CDATA[/exports/{os.path.basename(filepath)}]]></MediaFile>'
+            f'              <MediaFile delivery="progressive" type="{mime}" width="{width}" height="{height}"><![CDATA[{absolute_url}]]></MediaFile>'
         )
     vast_parts.extend([
         '            </MediaFiles>',
@@ -149,7 +154,7 @@ def generate_vast_xml(media_files: dict, button_text: str, button_color: str, bu
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-# Endpoint para procesar el video, generar archivos exportados y descargar el archivo VAST
+# Endpoint para procesar el video, generar archivos exportados, el VAST y un ZIP con los videos
 @app.post("/process_and_download")
 async def process_and_download(
     video_file: UploadFile = File(...),
@@ -165,7 +170,7 @@ async def process_and_download(
             await out_file.write(content)
     logger.info(f"Archivo subido y guardado en: {upload_path}")
 
-    # Simular la generación de archivos exportados para cada plataforma (en este ejemplo, copiamos el archivo)
+    # Generar archivos exportados para cada plataforma (simulación: copiamos el archivo original)
     media_files = {}
     for platform, params in PLATFORMS.items():
         output_filename = f"{os.path.splitext(filename)[0]}_{platform}.{params['container']}"
@@ -187,14 +192,33 @@ async def process_and_download(
         await vast_file.write(vast_content)
     logger.info(f"Archivo VAST generado: {vast_filepath}")
 
-    # Retornar el archivo VAST como FileResponse para forzar la descarga
-    return FileResponse(
-        path=vast_filepath,
-        filename=vast_filename,
-        media_type="application/xml"
-    )
+    # Generar un archivo ZIP con todos los videos exportados
+    zip_filename = f"{os.path.splitext(filename)[0]}_videos.zip"
+    zip_filepath = os.path.join(EXPORT_DIR, zip_filename)
+    with zipfile.ZipFile(zip_filepath, "w") as zipf:
+        for platform, path in media_files.items():
+            zipf.write(path, arcname=os.path.basename(path))
+    logger.info(f"Archivo ZIP generado: {zip_filepath}")
 
-# Punto de entrada para ejecutar la aplicación
+    # Retornar un JSON con las URLs para descargar el VAST y el ZIP
+    return JSONResponse({
+        "vast_url": f"/exports/{vast_filename}",
+        "zip_url": f"/exports/{zip_filename}"
+    })
+
+# Endpoint para limpiar (borrar) archivos de uploads y exports
+@app.get("/cleanup")
+async def cleanup():
+    for folder in [UPLOAD_DIR, EXPORT_DIR]:
+        for file in os.listdir(folder):
+            file_path = os.path.join(folder, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+            except Exception as e:
+                logger.error(f"Error eliminando {file_path}: {e}")
+    return JSONResponse({"message": "Limpieza completada"})
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
