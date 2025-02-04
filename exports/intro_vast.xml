@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VAST version="4.2" xmlns="http://www.iab.com/VAST">
-  <Ad id="20250204095315">
+  <Ad id="20250204102540">
     <InLine>
       <AdSystem>CTVConversionSystem</AdSystem>
       <AdTitle>Interactive Ad</AdTitle>
       <Impression><![CDATA[https://adsmood.com/track/impression]]></Impression>
       <Creatives>
         <Creative id="1" sequence="1">
-          <UniversalAdId idRegistry="Adsmood">20250204095315</UniversalAdId>
+          <UniversalAdId idRegistry="Adsmood">20250204102540</UniversalAdId>
           <Linear>
             <TrackingEvents>
               <Tracking event="start"><![CDATA[https://adsmood.com/track/start]]></Tracking>
@@ -63,7 +63,7 @@
       </AdVerifications>
       <Extensions>
         <Extension type="in-video">
-          <Button text="Watch Now" color="#ff5733" url="https://www.netflix.com/ar/title/81068725" />
+          <Button text="watch" color="FFFFFF" url="https://adsmood.com/" />
         </Extension>
       </Extensions>
     </InLine>
