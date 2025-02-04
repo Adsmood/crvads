@@ -1,4 +1,3 @@
-```python
 import os
 import logging
 from fastapi import FastAPI, Request, UploadFile, File
@@ -64,4 +63,3 @@ if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))  # Puerto dinámico en Render
     uvicorn.run("main:app", host="0.0.0.0", port=port)
-```
