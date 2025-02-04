@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="4.2" xmlns="http://www.iab.com/VAST">
+  <Ad id="20250203110125">
+    <InLine>
+      <AdSystem>CTVConversionSystem</AdSystem>
+      <AdTitle>Interactive Ad</AdTitle>
+      <Impression><![CDATA[https://adsmood.com/track/impression]]></Impression>
+      <Creatives>
+        <Creative id="1" sequence="1">
+          <UniversalAdId idRegistry="Adsmood">20250203110125</UniversalAdId>
+          <Linear>
+            <TrackingEvents>
+              <Tracking event="start"><![CDATA[https://adsmood.com/track/start]]></Tracking>
+            </TrackingEvents>
+            <MediaFiles>
+              <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080"><![CDATA[/exports/intro_roku.mp4]]></MediaFile>
+              <MediaFile delivery="progressive" type="video/mp4" width="1280" height="720"><![CDATA[/exports/intro_firetv.mp4]]></MediaFile>
+              <MediaFile delivery="progressive" type="video/quicktime" width="1920" height="1080"><![CDATA[/exports/intro_appletv.mov]]></MediaFile>
+              <MediaFile delivery="progressive" type="video/mp4" width="1280" height="720"><![CDATA[/exports/intro_androidtv.mp4]]></MediaFile>
+              <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080"><![CDATA[/exports/intro_samsung.mp4]]></MediaFile>
+              <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080"><![CDATA[/exports/intro_lg.mp4]]></MediaFile>
+              <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080"><![CDATA[/exports/intro_vizio.mp4]]></MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+      </Creatives>
+      <AdVerifications>
+        <Verification vendor="roku">
+          <JavaScriptResource apiFramework="omid" browserOptional="true">
+            <![CDATA[https://sdk.roku.com/raf.js]]>
+          </JavaScriptResource>
+        </Verification>
+        <Verification vendor="amazon">
+          <JavaScriptResource apiFramework="omid" browserOptional="true">
+            <![CDATA[https://aps.amazon.com/sdk.js]]>
+          </JavaScriptResource>
+        </Verification>
+        <Verification vendor="apple">
+          <JavaScriptResource apiFramework="omid" browserOptional="true">
+            <![CDATA[https://ads.apple.com/tvos-sdk.js]]>
+          </JavaScriptResource>
+        </Verification>
+        <Verification vendor="amazon">
+          <JavaScriptResource apiFramework="omid" browserOptional="true">
+            <![CDATA[https://aps.amazon.com/sdk.js]]>
+          </JavaScriptResource>
+        </Verification>
+        <Verification vendor="samsung">
+          <JavaScriptResource apiFramework="omid" browserOptional="true">
+            <![CDATA[https://ads.samsung.com/sdk.js]]>
+          </JavaScriptResource>
+        </Verification>
+        <Verification vendor="lg">
+          <JavaScriptResource apiFramework="omid" browserOptional="true">
+            <![CDATA[https://ads.lg.com/webos-sdk.js]]>
+          </JavaScriptResource>
+        </Verification>
+        <Verification vendor="vizio">
+          <JavaScriptResource apiFramework="omid" browserOptional="true">
+            <![CDATA[https://ads.vizio.com/sdk.js]]>
+          </JavaScriptResource>
+        </Verification>
+      </AdVerifications>
+      <Extensions>
+        <Extension type="in-video">
+          <Button text="Watch Now" color="#ff5733" url="https://www.netflix.com/ar/title/81068725" />
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>
