@@ -1,7 +1,9 @@
 import os
 import logging
-from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, Request, UploadFile, File
+from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 import aiofiles
 
 # Configuración de logging
@@ -14,9 +16,21 @@ EXPORT_DIR = "exports"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 os.makedirs(EXPORT_DIR, exist_ok=True)
 
-# Inicialización de la aplicación
-app = FastAPI()
+# Inicialización de la aplicación y configuración de plantillas
+app = FastAPI(title="WebApp de Conversión y VAST Interactivo")
+templates = Jinja2Templates(directory="templates")
 
+# Montar las carpetas estáticas
+app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+app.mount("/exports", StaticFiles(directory=EXPORT_DIR), name="exports")
+
+# Página principal
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    """Renderiza la página principal con el formulario."""
+    return templates.TemplateResponse("index.html", {"request": request})
+
+# Endpoint para procesar y descargar el archivo generado
 @app.post("/process_and_download")
 async def process_and_download(video_file: UploadFile = File(...)):
     """Procesa el video, genera los archivos exportados y los descarga automáticamente."""
@@ -47,3 +61,9 @@ async def process_and_download(video_file: UploadFile = File(...)):
         filename=vast_filename,
         media_type="application/xml"
     )
+
+# Punto de entrada para ejecutar la aplicación
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # Puerto dinámico en Render
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
