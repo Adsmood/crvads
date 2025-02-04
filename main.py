@@ -99,4 +99,6 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
 
+os.makedirs("uploads", exist_ok=True)
+os.makedirs("exports", exist_ok=True)
 
