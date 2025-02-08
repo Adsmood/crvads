@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="4.2" xmlns="http://www.iab.com/VAST">
+  <Ad id="adsmood-1739051311576">
+    <InLine>
+      <AdSystem version="2.0">Adsmood CTV Interactive</AdSystem>
+      <AdTitle>Interactive CTV Ad</AdTitle>
+      <Description>Interactive CTV Advertisement with Enhanced Tracking</Description>
+      <Error><![CDATA[http://localhost:3000/error]]></Error>
+      <Impression><![CDATA[http://localhost:3000/track/impression]]></Impression>
+      <ViewableImpression>
+        <Viewable><![CDATA[http://localhost:3000/track/viewable]]></Viewable>
+        <NotViewable><![CDATA[http://localhost:3000/track/not-viewable]]></NotViewable>
+        <ViewUndetermined><![CDATA[http://localhost:3000/track/view-undetermined]]></ViewUndetermined>
+      </ViewableImpression>
+      <Category authority="IAB">Interactive</Category>
+      <Creatives>
+        <Creative>
+          <UniversalAdId idRegistry="Adsmood">adsmood-1739051311576</UniversalAdId>
+          <Linear>
+            <Duration>00:00:30</Duration>
+            <TrackingEvents>
+              <Tracking event="start"><![CDATA[http://localhost:3000/track/start]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[http://localhost:3000/track/firstQuartile]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[http://localhost:3000/track/midpoint]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[http://localhost:3000/track/thirdQuartile]]></Tracking>
+              <Tracking event="complete"><![CDATA[http://localhost:3000/track/complete]]></Tracking>
+              <Tracking event="skip"><![CDATA[http://localhost:3000/track/skip]]></Tracking>
+              <Tracking event="otherAdInteraction"><![CDATA[http://localhost:3000/track/interaction]]></Tracking>undefined
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickTracking><![CDATA[http://localhost:3000/track/click]]></ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              
+              <MediaFile 
+                delivery="progressive" 
+                type="video/mp4" 
+                width="1920" 
+                height="1080" 
+                bitrate="2000"
+                codec="H.264"
+                maintainAspectRatio="true">
+                <![CDATA[http://localhost:3000blob:http://localhost:3000/6e9a1256-22d1-444e-a3cd-7f0d8b2ab4d9]]>
+              </MediaFile>
+              
+              <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080" maintainAspectRatio="true">
+                <![CDATA[http://localhost:3000blob:http://localhost:3000/6e9a1256-22d1-444e-a3cd-7f0d8b2ab4d9]]>
+              </MediaFile>
+            </MediaFiles>
+            <AdParameters><![CDATA[{"version":"1.0","type":"CTV-Interactive","platform":"roku","layout":{"aspectRatio":"16:9","videoPosition":{"left":"20px","width":"60%"},"safeZones":{"title":{"top":"5%","height":"15%"},"action":{"bottom":"10%","height":"20%"}}},"elements":[{"id":"631a12a8-be2b-4e43-aa70-0bdbf8c29974","type":"video","position":{"x":83,"y":94},"size":{"width":926,"height":520.875},"content":{"src":"blob:http://localhost:3000/7d122a6a-eb81-48c0-b2ef-3f44be47b30f","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":0,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onHover":"http://localhost:3000/track/hover/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onFocus":"http://localhost:3000/track/focus/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onKeyDown":"http://localhost:3000/track/keydown/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onKeyUp":"http://localhost:3000/track/keyup/631a12a8-be2b-4e43-aa70-0bdbf8c29974"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/631a12a8-be2b-4e43-aa70-0bdbf8c29974","interactionUrl":"http://localhost:3000/track/interaction/631a12a8-be2b-4e43-aa70-0bdbf8c29974"},"remoteControl":{"focusable":true,"focusOrder":0,"navigationRules":{}}},{"id":"507d7605-c725-4b7b-af0d-dd0215565bfd","type":"button","position":{"x":310,"y":625},"size":{"width":549,"height":134},"content":{"image":"blob:http://localhost:3000/c82e3250-94c3-4d32-bb43-c823744f6529","url":"https://www.mercadolibre.com.ar/","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":1,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/507d7605-c725-4b7b-af0d-dd0215565bfd","onHover":"http://localhost:3000/track/hover/507d7605-c725-4b7b-af0d-dd0215565bfd","onFocus":"http://localhost:3000/track/focus/507d7605-c725-4b7b-af0d-dd0215565bfd","onKeyDown":"http://localhost:3000/track/keydown/507d7605-c725-4b7b-af0d-dd0215565bfd","onKeyUp":"http://localhost:3000/track/keyup/507d7605-c725-4b7b-af0d-dd0215565bfd"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/507d7605-c725-4b7b-af0d-dd0215565bfd","interactionUrl":"http://localhost:3000/track/interaction/507d7605-c725-4b7b-af0d-dd0215565bfd"},"remoteControl":{"focusable":true,"focusOrder":1,"navigationRules":{}}},{"id":"fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","type":"qr","position":{"x":924,"y":379},"size":{"width":297,"height":176},"content":{"url":"https://www.mercadolibre.com.ar/","type":"web"},"zIndex":3,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onHover":"http://localhost:3000/track/hover/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onFocus":"http://localhost:3000/track/focus/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onKeyDown":"http://localhost:3000/track/keydown/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onKeyUp":"http://localhost:3000/track/keyup/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","interactionUrl":"http://localhost:3000/track/interaction/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747"},"remoteControl":{"focusable":true,"focusOrder":2,"navigationRules":{}}}],"background":{"url":"http://localhost:3000blob:http://localhost:3000/6e9a1256-22d1-444e-a3cd-7f0d8b2ab4d9","type":"image","style":{"scale":1,"position":{"x":50,"y":50}}},"timeline":{"currentTime":0,"isPlaying":false,"duration":30},"tracking":{"enabled":true,"events":["impression","interaction","completion","quartiles"]},"remoteControl":{"enabled":true,"initialFocus":"631a12a8-be2b-4e43-aa70-0bdbf8c29974","navigationMode":"grid"},"fallback":{"enabled":true,"videoUrl":"http://localhost:3000blob:http://localhost:3000/6e9a1256-22d1-444e-a3cd-7f0d8b2ab4d9"}}]]></AdParameters>
+          </Linear>
+          <CreativeExtensions>
+            <CreativeExtension type="AdsmoodInteractive">
+              <InteractiveCreativeData>
+                <![CDATA[{"version":"1.0","type":"CTV-Interactive","platform":"roku","layout":{"aspectRatio":"16:9","videoPosition":{"left":"20px","width":"60%"},"safeZones":{"title":{"top":"5%","height":"15%"},"action":{"bottom":"10%","height":"20%"}}},"elements":[{"id":"631a12a8-be2b-4e43-aa70-0bdbf8c29974","type":"video","position":{"x":83,"y":94},"size":{"width":926,"height":520.875},"content":{"src":"blob:http://localhost:3000/7d122a6a-eb81-48c0-b2ef-3f44be47b30f","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":0,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onHover":"http://localhost:3000/track/hover/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onFocus":"http://localhost:3000/track/focus/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onKeyDown":"http://localhost:3000/track/keydown/631a12a8-be2b-4e43-aa70-0bdbf8c29974","onKeyUp":"http://localhost:3000/track/keyup/631a12a8-be2b-4e43-aa70-0bdbf8c29974"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/631a12a8-be2b-4e43-aa70-0bdbf8c29974","interactionUrl":"http://localhost:3000/track/interaction/631a12a8-be2b-4e43-aa70-0bdbf8c29974"},"remoteControl":{"focusable":true,"focusOrder":0,"navigationRules":{}}},{"id":"507d7605-c725-4b7b-af0d-dd0215565bfd","type":"button","position":{"x":310,"y":625},"size":{"width":549,"height":134},"content":{"image":"blob:http://localhost:3000/c82e3250-94c3-4d32-bb43-c823744f6529","url":"https://www.mercadolibre.com.ar/","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":1,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/507d7605-c725-4b7b-af0d-dd0215565bfd","onHover":"http://localhost:3000/track/hover/507d7605-c725-4b7b-af0d-dd0215565bfd","onFocus":"http://localhost:3000/track/focus/507d7605-c725-4b7b-af0d-dd0215565bfd","onKeyDown":"http://localhost:3000/track/keydown/507d7605-c725-4b7b-af0d-dd0215565bfd","onKeyUp":"http://localhost:3000/track/keyup/507d7605-c725-4b7b-af0d-dd0215565bfd"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/507d7605-c725-4b7b-af0d-dd0215565bfd","interactionUrl":"http://localhost:3000/track/interaction/507d7605-c725-4b7b-af0d-dd0215565bfd"},"remoteControl":{"focusable":true,"focusOrder":1,"navigationRules":{}}},{"id":"fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","type":"qr","position":{"x":924,"y":379},"size":{"width":297,"height":176},"content":{"url":"https://www.mercadolibre.com.ar/","type":"web"},"zIndex":3,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onHover":"http://localhost:3000/track/hover/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onFocus":"http://localhost:3000/track/focus/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onKeyDown":"http://localhost:3000/track/keydown/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","onKeyUp":"http://localhost:3000/track/keyup/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747","interactionUrl":"http://localhost:3000/track/interaction/fc8d1c55-bdaa-4fb9-8a32-0153fba1a747"},"remoteControl":{"focusable":true,"focusOrder":2,"navigationRules":{}}}],"background":{"url":"http://localhost:3000blob:http://localhost:3000/6e9a1256-22d1-444e-a3cd-7f0d8b2ab4d9","type":"image","style":{"scale":1,"position":{"x":50,"y":50}}},"timeline":{"currentTime":0,"isPlaying":false,"duration":30},"tracking":{"enabled":true,"events":["impression","interaction","completion","quartiles"]},"remoteControl":{"enabled":true,"initialFocus":"631a12a8-be2b-4e43-aa70-0bdbf8c29974","navigationMode":"grid"},"fallback":{"enabled":true,"videoUrl":"http://localhost:3000blob:http://localhost:3000/6e9a1256-22d1-444e-a3cd-7f0d8b2ab4d9"}}]]>
+              </InteractiveCreativeData>
+            </CreativeExtension>
+          </CreativeExtensions>
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension type="AdVerification">undefined
+        </Extension>
+        <Extension type="Metrics">undefined
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>
