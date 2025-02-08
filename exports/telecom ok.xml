@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="4.2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.iab.com/VAST">
+  <Ad id="adsmood-1739052479928" sequence="1">
+    <InLine>
+      <AdSystem version="2.0">Adsmood CTV Interactive</AdSystem>
+      <AdTitle>Interactive CTV Ad</AdTitle>
+      <Description>Interactive CTV Advertisement with Enhanced Tracking</Description>
+      <Advertiser>Adsmood</Advertiser>
+      <Pricing model="CPM" currency="USD">0.0</Pricing>
+      <Error><![CDATA[http://localhost:3000/error]]></Error>
+      <Impression id="impression-1"><![CDATA[http://localhost:3000/track/impression]]></Impression>
+      <Category authority="IAB">Interactive</Category>
+      
+      <ViewableImpression id="viewable-1">
+        <Viewable><![CDATA[http://localhost:3000/track/viewable]]></Viewable>
+      </ViewableImpression>
+      <Creatives>
+        <Creative id="creative-1" sequence="1" adId="adsmood-1739052479928">
+          <UniversalAdId idRegistry="Ad-ID" idValue="adsmood-1739052479928" />
+          <Linear skipoffset="00:00:05">
+            <Duration>00:00:30</Duration>
+            <TrackingEvents><Tracking event="start"><![CDATA[http://localhost:3000/track/start]]></Tracking><Tracking event="firstQuartile"><![CDATA[http://localhost:3000/track/firstQuartile]]></Tracking><Tracking event="midpoint"><![CDATA[http://localhost:3000/track/midpoint]]></Tracking><Tracking event="thirdQuartile"><![CDATA[http://localhost:3000/track/thirdQuartile]]></Tracking><Tracking event="complete"><![CDATA[http://localhost:3000/track/complete]]></Tracking><Tracking event="skip"><![CDATA[http://localhost:3000/track/skip]]></Tracking><Tracking event="otherAdInteraction"><![CDATA[http://localhost:3000/track/interaction]]></Tracking></TrackingEvents>
+            <VideoClicks>
+              <ClickTracking id="clicktrack-1"><![CDATA[http://localhost:3000/track/click]]></ClickTracking>
+            </VideoClicks>
+            <MediaFiles><MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080" bitrate="2000" codec="H.264" maintainAspectRatio="true"><![CDATA[http://localhost:3000blob:http://localhost:3000/18754e81-7ad6-4e3e-8a83-4976274dc642]]></MediaFile><MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080" maintainAspectRatio="true"><![CDATA[http://localhost:3000blob:http://localhost:3000/18754e81-7ad6-4e3e-8a83-4976274dc642]]></MediaFile></MediaFiles>
+            <Icons>
+              <Icon program="DV360_CTV" width="30" height="30" xPosition="right" yPosition="top">
+                <StaticResource creativeType="image/png"><![CDATA[http://localhost:3000/assets/interactive-icon.png]]></StaticResource>
+                <IconClicks>
+                  <IconClickThrough><![CDATA[http://localhost:3000/interactive]]></IconClickThrough>
+                </IconClicks>
+              </Icon>
+            </Icons>
+            <InteractiveCreativeFile>
+              <![CDATA[{"version":"1.0","type":"CTV-Interactive","platform":"roku","layout":{"aspectRatio":"16:9","videoPosition":{"left":"20px","width":"60%"},"safeZones":{"title":{"top":"5%","height":"15%"},"action":{"bottom":"10%","height":"20%"}}},"elements":[{"id":"e75f9e06-0543-494e-bdfe-5e0ea8e4269d","type":"choice","position":{"x":53,"y":36},"size":{"width":1082,"height":709},"content":{"options":[{"id":"q33s2aix5","imageUrl":"blob:http://localhost:3000/de867b80-d6e5-4d91-baac-759670b92225","videoUrl":"blob:http://localhost:3000/c2f9d5ce-4014-4dea-a68b-419ec539a5ca"},{"id":"j53yzx67n","imageUrl":"blob:http://localhost:3000/23aa23e6-401b-4f40-bd02-168df651ede4","videoUrl":"blob:http://localhost:3000/3c0a418a-a365-4633-876c-e971cdbe82ff"}],"redirectUrl":"","selectedOption":null},"zIndex":0,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/e75f9e06-0543-494e-bdfe-5e0ea8e4269d","onHover":"http://localhost:3000/track/hover/e75f9e06-0543-494e-bdfe-5e0ea8e4269d","onFocus":"http://localhost:3000/track/focus/e75f9e06-0543-494e-bdfe-5e0ea8e4269d","onKeyDown":"http://localhost:3000/track/keydown/e75f9e06-0543-494e-bdfe-5e0ea8e4269d","onKeyUp":"http://localhost:3000/track/keyup/e75f9e06-0543-494e-bdfe-5e0ea8e4269d"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/e75f9e06-0543-494e-bdfe-5e0ea8e4269d","interactionUrl":"http://localhost:3000/track/interaction/e75f9e06-0543-494e-bdfe-5e0ea8e4269d"},"remoteControl":{"focusable":true,"focusOrder":0,"navigationRules":{}}},{"id":"fe6f08ae-373c-4ff8-ad66-875d47fc2d31","type":"button","position":{"x":1324,"y":601},"size":{"width":200,"height":100},"content":{"image":"blob:http://localhost:3000/d3e432cc-0ba4-41c2-8668-c6b72d0a383b","url":"https://www.telecom.com.ar/web/","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":1,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/fe6f08ae-373c-4ff8-ad66-875d47fc2d31","onHover":"http://localhost:3000/track/hover/fe6f08ae-373c-4ff8-ad66-875d47fc2d31","onFocus":"http://localhost:3000/track/focus/fe6f08ae-373c-4ff8-ad66-875d47fc2d31","onKeyDown":"http://localhost:3000/track/keydown/fe6f08ae-373c-4ff8-ad66-875d47fc2d31","onKeyUp":"http://localhost:3000/track/keyup/fe6f08ae-373c-4ff8-ad66-875d47fc2d31"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/fe6f08ae-373c-4ff8-ad66-875d47fc2d31","interactionUrl":"http://localhost:3000/track/interaction/fe6f08ae-373c-4ff8-ad66-875d47fc2d31"},"remoteControl":{"focusable":true,"focusOrder":1,"navigationRules":{}}}],"background":{"url":"http://localhost:3000blob:http://localhost:3000/18754e81-7ad6-4e3e-8a83-4976274dc642","type":"image","style":{"scale":1,"position":{"x":50,"y":50}}},"timeline":{"currentTime":0,"isPlaying":false,"duration":30},"tracking":{"enabled":true,"events":["impression","interaction","completion","quartiles"]},"remoteControl":{"enabled":true,"initialFocus":"e75f9e06-0543-494e-bdfe-5e0ea8e4269d","navigationMode":"grid"},"fallback":{"enabled":true,"videoUrl":"http://localhost:3000blob:http://localhost:3000/18754e81-7ad6-4e3e-8a83-4976274dc642"}}]]>
+            </InteractiveCreativeFile>
+          </Linear>
+          
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension type="AdVerification"></Extension>
+        <Extension type="Metrics"></Extension>
+        <Extension type="AdChoices">
+          <AdChoicesIcon>
+            <StaticResource creativeType="image/png"><![CDATA[http://localhost:3000/assets/adchoices.png]]></StaticResource>
+            <IconClickThrough><![CDATA[http://localhost:3000/adchoices]]></IconClickThrough>
+          </AdChoicesIcon>
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>
