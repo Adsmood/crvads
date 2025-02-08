@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="4.2">
+  <Ad id="adsmood-ctv-1739038476331">
+    <InLine>
+      <AdSystem>Adsmood CTV Interactive</AdSystem>
+      <AdTitle>CTV Interactive Ad</AdTitle>
+      <Description>Interactive CTV Advertisement</Description>
+      <Error><![CDATA[https://github.com/Adsmood/crvads/tree/main/exports/error]]></Error>
+      <Impression><![CDATA[https://github.com/Adsmood/crvads/tree/main/exports/track/impression]]></Impression>
+      
+      <ViewableImpression>
+        <Viewable><![CDATA[https://github.com/Adsmood/crvads/tree/main/exports/track/impression]]></Viewable>
+      </ViewableImpression>
+
+      <CreativeExtensions>
+        <CreativeExtension type="adsmood">
+          <InteractiveCreative>
+            <Timeline duration="30">
+              
+        <InteractiveElement id="6e333581-696e-4ba9-9e74-44e09ad1e99a" type="choice"
+          xPosition="36" yPosition="62"
+          width="949" height="630">
+          
+        </InteractiveElement>
+      
+
+        <InteractiveElement id="23885f50-16f4-4df1-87ef-3b442b39c9fd" type="button"
+          xPosition="1149" yPosition="537"
+          width="200" height="100">
+          
+        </InteractiveElement>
+      
+            </Timeline>
+          </InteractiveCreative>
+        </CreativeExtension>
+      </CreativeExtensions>
+
+      <Creatives>
+        <Creative sequence="1">
+          <UniversalAdId idRegistry="adsmood">adsmood-ctv-1739038476331</UniversalAdId>
+          <Linear>
+            <Duration>00:00:30</Duration>
+            <TrackingEvents>
+              <Tracking event="start"><![CDATA[https://github.com/Adsmood/crvads/tree/main/exports/track/start]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://github.com/Adsmood/crvads/tree/main/exports/track/complete]]></Tracking>
+              <Tracking event="skip"><![CDATA[https://github.com/Adsmood/crvads/tree/main/exports/track/skip]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickTracking><![CDATA[https://github.com/Adsmood/crvads/tree/main/exports/track/click]]></ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              
+        <MediaFile delivery="progressive" type="image/jpeg" width="1920" height="1080">
+          <![CDATA[https://github.com/Adsmood/crvads/tree/main/exportsblob:http://localhost:3000/034cddec-f206-4484-8649-e7a6e7cdeb71]]>
+        </MediaFile>
+      
+
+          <MediaFile id="23885f50-16f4-4df1-87ef-3b442b39c9fd" delivery="progressive" type="image/jpeg">
+            <![CDATA[https://github.com/Adsmood/crvads/tree/main/exportshttps://www.telecom.com.ar/web/]]>
+          </MediaFile>
+        
+            </MediaFiles>
+          </Linear>
+        </Creative>
+      </Creatives>
+    </InLine>
+  </Ad>
+</VAST>
