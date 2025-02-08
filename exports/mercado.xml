@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="4.2" xmlns="http://www.iab.com/VAST">
+  <Ad id="adsmood-1739048940163">
+    <InLine>
+      <AdSystem version="2.0">Adsmood CTV Interactive</AdSystem>
+      <AdTitle>Interactive CTV Ad</AdTitle>
+      <Description>Interactive CTV Advertisement with Enhanced Tracking</Description>
+      <Error><![CDATA[http://localhost:3000/error]]></Error>
+      <Impression><![CDATA[http://localhost:3000/track/impression]]></Impression>
+      <ViewableImpression>
+        <Viewable><![CDATA[http://localhost:3000/track/viewable]]></Viewable>
+      </ViewableImpression>
+      <Category authority="IAB">Interactive</Category>
+      <Creatives>
+        <Creative>
+          <UniversalAdId idRegistry="Adsmood">adsmood-1739048940163</UniversalAdId>
+          <Linear>
+            <Duration>00:00:30</Duration>
+            <TrackingEvents>
+              <Tracking event="start"><![CDATA[http://localhost:3000/track/start]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[http://localhost:3000/track/firstQuartile]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[http://localhost:3000/track/midpoint]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[http://localhost:3000/track/thirdQuartile]]></Tracking>
+              <Tracking event="complete"><![CDATA[http://localhost:3000/track/complete]]></Tracking>
+              <Tracking event="skip"><![CDATA[http://localhost:3000/track/skip]]></Tracking>
+              <Tracking event="otherAdInteraction"><![CDATA[http://localhost:3000/track/interaction]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickTracking><![CDATA[http://localhost:3000/track/click]]></ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              
+              <MediaFile 
+                delivery="progressive" 
+                type="video/mp4" 
+                width="1920" 
+                height="1080" 
+                bitrate="2000"
+                codec="H.264"
+                maintainAspectRatio="true">
+                <![CDATA[http://localhost:3000blob:http://localhost:3000/d46a037a-2187-4821-bb72-8790b5634b1e]]>
+              </MediaFile>
+              
+              <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080" maintainAspectRatio="true">
+                <![CDATA[http://localhost:3000blob:http://localhost:3000/d46a037a-2187-4821-bb72-8790b5634b1e]]>
+              </MediaFile>
+            </MediaFiles>
+            <AdParameters><![CDATA[{"version":"1.0","type":"CTV-Interactive","platform":"roku","layout":{"aspectRatio":"16:9","videoPosition":{"left":"20px","width":"60%"},"safeZones":{"title":{"top":"5%","height":"15%"},"action":{"bottom":"10%","height":"20%"}}},"elements":[{"id":"66657933-c099-4a20-b072-f2628d08ce12","type":"video","position":{"x":76,"y":76},"size":{"width":901,"height":506.8125},"content":{"src":"blob:http://localhost:3000/99e4b7bc-ae2f-4017-ae5a-ed631487eddb","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":0,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/66657933-c099-4a20-b072-f2628d08ce12","onHover":"http://localhost:3000/track/hover/66657933-c099-4a20-b072-f2628d08ce12","onFocus":"http://localhost:3000/track/focus/66657933-c099-4a20-b072-f2628d08ce12","onKeyDown":"http://localhost:3000/track/keydown/66657933-c099-4a20-b072-f2628d08ce12","onKeyUp":"http://localhost:3000/track/keyup/66657933-c099-4a20-b072-f2628d08ce12"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/66657933-c099-4a20-b072-f2628d08ce12","interactionUrl":"http://localhost:3000/track/interaction/66657933-c099-4a20-b072-f2628d08ce12"},"remoteControl":{"focusable":true,"focusOrder":0,"navigationRules":{}}},{"id":"bee229f1-d306-48a3-85b2-6aa4f78bfdc5","type":"qr","position":{"x":888,"y":436},"size":{"width":367,"height":221},"content":{"url":"https://www.mercadolibre.com.ar/","type":"web"},"zIndex":1,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onHover":"http://localhost:3000/track/hover/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onFocus":"http://localhost:3000/track/focus/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onKeyDown":"http://localhost:3000/track/keydown/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onKeyUp":"http://localhost:3000/track/keyup/bee229f1-d306-48a3-85b2-6aa4f78bfdc5"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","interactionUrl":"http://localhost:3000/track/interaction/bee229f1-d306-48a3-85b2-6aa4f78bfdc5"},"remoteControl":{"focusable":true,"focusOrder":1,"navigationRules":{}}},{"id":"cb79ee6c-d60a-48f5-8aad-35b9f5393592","type":"button","position":{"x":293,"y":583},"size":{"width":532,"height":152},"content":{"image":"blob:http://localhost:3000/ef4f3149-6b97-490b-a0ff-901f79393572","url":"https://www.mercadolibre.com.ar/","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":2,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onHover":"http://localhost:3000/track/hover/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onFocus":"http://localhost:3000/track/focus/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onKeyDown":"http://localhost:3000/track/keydown/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onKeyUp":"http://localhost:3000/track/keyup/cb79ee6c-d60a-48f5-8aad-35b9f5393592"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/cb79ee6c-d60a-48f5-8aad-35b9f5393592","interactionUrl":"http://localhost:3000/track/interaction/cb79ee6c-d60a-48f5-8aad-35b9f5393592"},"remoteControl":{"focusable":true,"focusOrder":2,"navigationRules":{}}}],"background":{"url":"http://localhost:3000blob:http://localhost:3000/d46a037a-2187-4821-bb72-8790b5634b1e","type":"image","style":{"scale":1,"position":{"x":50,"y":50}}},"timeline":{"currentTime":0,"isPlaying":false,"duration":30},"tracking":{"enabled":true,"events":["impression","interaction","completion","quartiles"]},"remoteControl":{"enabled":true,"initialFocus":"66657933-c099-4a20-b072-f2628d08ce12","navigationMode":"grid"},"fallback":{"enabled":true,"videoUrl":"http://localhost:3000blob:http://localhost:3000/d46a037a-2187-4821-bb72-8790b5634b1e"}}]]></AdParameters>
+          </Linear>
+          <CreativeExtensions>
+            <CreativeExtension type="AdsmoodInteractive">
+              <InteractiveCreativeData>
+                <![CDATA[{"version":"1.0","type":"CTV-Interactive","platform":"roku","layout":{"aspectRatio":"16:9","videoPosition":{"left":"20px","width":"60%"},"safeZones":{"title":{"top":"5%","height":"15%"},"action":{"bottom":"10%","height":"20%"}}},"elements":[{"id":"66657933-c099-4a20-b072-f2628d08ce12","type":"video","position":{"x":76,"y":76},"size":{"width":901,"height":506.8125},"content":{"src":"blob:http://localhost:3000/99e4b7bc-ae2f-4017-ae5a-ed631487eddb","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":0,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/66657933-c099-4a20-b072-f2628d08ce12","onHover":"http://localhost:3000/track/hover/66657933-c099-4a20-b072-f2628d08ce12","onFocus":"http://localhost:3000/track/focus/66657933-c099-4a20-b072-f2628d08ce12","onKeyDown":"http://localhost:3000/track/keydown/66657933-c099-4a20-b072-f2628d08ce12","onKeyUp":"http://localhost:3000/track/keyup/66657933-c099-4a20-b072-f2628d08ce12"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/66657933-c099-4a20-b072-f2628d08ce12","interactionUrl":"http://localhost:3000/track/interaction/66657933-c099-4a20-b072-f2628d08ce12"},"remoteControl":{"focusable":true,"focusOrder":0,"navigationRules":{}}},{"id":"bee229f1-d306-48a3-85b2-6aa4f78bfdc5","type":"qr","position":{"x":888,"y":436},"size":{"width":367,"height":221},"content":{"url":"https://www.mercadolibre.com.ar/","type":"web"},"zIndex":1,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onHover":"http://localhost:3000/track/hover/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onFocus":"http://localhost:3000/track/focus/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onKeyDown":"http://localhost:3000/track/keydown/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","onKeyUp":"http://localhost:3000/track/keyup/bee229f1-d306-48a3-85b2-6aa4f78bfdc5"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/bee229f1-d306-48a3-85b2-6aa4f78bfdc5","interactionUrl":"http://localhost:3000/track/interaction/bee229f1-d306-48a3-85b2-6aa4f78bfdc5"},"remoteControl":{"focusable":true,"focusOrder":1,"navigationRules":{}}},{"id":"cb79ee6c-d60a-48f5-8aad-35b9f5393592","type":"button","position":{"x":293,"y":583},"size":{"width":532,"height":152},"content":{"image":"blob:http://localhost:3000/ef4f3149-6b97-490b-a0ff-901f79393572","url":"https://www.mercadolibre.com.ar/","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":2,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onHover":"http://localhost:3000/track/hover/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onFocus":"http://localhost:3000/track/focus/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onKeyDown":"http://localhost:3000/track/keydown/cb79ee6c-d60a-48f5-8aad-35b9f5393592","onKeyUp":"http://localhost:3000/track/keyup/cb79ee6c-d60a-48f5-8aad-35b9f5393592"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/cb79ee6c-d60a-48f5-8aad-35b9f5393592","interactionUrl":"http://localhost:3000/track/interaction/cb79ee6c-d60a-48f5-8aad-35b9f5393592"},"remoteControl":{"focusable":true,"focusOrder":2,"navigationRules":{}}}],"background":{"url":"http://localhost:3000blob:http://localhost:3000/d46a037a-2187-4821-bb72-8790b5634b1e","type":"image","style":{"scale":1,"position":{"x":50,"y":50}}},"timeline":{"currentTime":0,"isPlaying":false,"duration":30},"tracking":{"enabled":true,"events":["impression","interaction","completion","quartiles"]},"remoteControl":{"enabled":true,"initialFocus":"66657933-c099-4a20-b072-f2628d08ce12","navigationMode":"grid"},"fallback":{"enabled":true,"videoUrl":"http://localhost:3000blob:http://localhost:3000/d46a037a-2187-4821-bb72-8790b5634b1e"}}]]>
+              </InteractiveCreativeData>
+            </CreativeExtension>
+          </CreativeExtensions>
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension type="AdVerification">
+          <VerificationParameters>
+            <![CDATA[{"trackingUrls":{"impression":"http://localhost:3000/track/impression","complete":"http://localhost:3000/track/complete","interaction":"http://localhost:3000/track/interaction"},"platform":"roku"}]]>
+          </VerificationParameters>
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>
