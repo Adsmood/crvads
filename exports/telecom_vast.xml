@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="4.2" xmlns="http://www.iab.com/VAST">
+  <Ad id="adsmood-1739111763454">
+    <InLine>
+      <AdSystem version="2.0">Adsmood CTV Interactive</AdSystem>
+      <AdTitle>Interactive CTV Ad</AdTitle>
+      <Description>Interactive CTV Advertisement with Enhanced Tracking</Description>
+      <Error><![CDATA[http://localhost:3000/error]]></Error>
+      <Impression><![CDATA[http://localhost:3000/track/impression]]></Impression>
+      <ViewableImpression>
+        <Viewable><![CDATA[http://localhost:3000/track/viewable]]></Viewable>
+      </ViewableImpression>
+      <Category authority="IAB">Interactive</Category>
+      <Creatives>
+        <Creative>
+          <UniversalAdId idRegistry="Adsmood">adsmood-1739111763454</UniversalAdId>
+          <Linear>
+            <Duration>00:00:30</Duration>
+            <TrackingEvents>
+              <Tracking event="start"><![CDATA[http://localhost:3000/track/start]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[http://localhost:3000/track/firstQuartile]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[http://localhost:3000/track/midpoint]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[http://localhost:3000/track/thirdQuartile]]></Tracking>
+              <Tracking event="complete"><![CDATA[http://localhost:3000/track/complete]]></Tracking>
+              <Tracking event="skip"><![CDATA[http://localhost:3000/track/skip]]></Tracking>
+              <Tracking event="otherAdInteraction"><![CDATA[http://localhost:3000/track/interaction]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickTracking><![CDATA[http://localhost:3000/track/click]]></ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              
+              <MediaFile 
+                delivery="progressive" 
+                type="video/mp4" 
+                width="1920" 
+                height="1080" 
+                bitrate="2000"
+                codec="H.264"
+                maintainAspectRatio="true">
+                <![CDATA[http://localhost:3000blob:http://localhost:3000/53d6f41b-cf19-4d86-a521-534a55b9e228]]>
+              </MediaFile>
+              
+              <MediaFile delivery="progressive" type="video/mp4" width="1920" height="1080" maintainAspectRatio="true">
+                <![CDATA[http://localhost:3000blob:http://localhost:3000/53d6f41b-cf19-4d86-a521-534a55b9e228]]>
+              </MediaFile>
+            </MediaFiles>
+            <AdParameters><![CDATA[{"version":"1.0","type":"CTV-Interactive","platform":"roku","layout":{"aspectRatio":"16:9","videoPosition":{"left":"20px","width":"60%"},"safeZones":{"title":{"top":"5%","height":"15%"},"action":{"bottom":"10%","height":"20%"}}},"elements":[{"id":"536aa0b9-74e3-4df6-a97f-9153ecd48eee","type":"choice","position":{"x":44,"y":45},"size":{"width":1062,"height":679},"content":{"options":[{"id":"stxhpnmph","imageUrl":"blob:http://localhost:3000/4363e1b9-0319-49f6-930d-6e90c84aa37c","videoUrl":"","redirectUrl":"https://www.telecom.com.ar/web/"},{"id":"t0sfh87mg","imageUrl":"blob:http://localhost:3000/61db01b0-3b01-47d0-b61d-ddea6bb45017","videoUrl":"","redirectUrl":"https://www.telecom.com.ar/web/"}],"redirectUrl":"","selectedOption":null},"zIndex":0,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onHover":"http://localhost:3000/track/hover/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onFocus":"http://localhost:3000/track/focus/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onKeyDown":"http://localhost:3000/track/keydown/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onKeyUp":"http://localhost:3000/track/keyup/536aa0b9-74e3-4df6-a97f-9153ecd48eee"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/536aa0b9-74e3-4df6-a97f-9153ecd48eee","interactionUrl":"http://localhost:3000/track/interaction/536aa0b9-74e3-4df6-a97f-9153ecd48eee"},"remoteControl":{"focusable":true,"focusOrder":0,"navigationRules":{}}},{"id":"56b4fc71-3fba-40ac-94c3-30e8c2c8d549","type":"button","position":{"x":1309,"y":606},"size":{"width":200,"height":100},"content":{"image":"blob:http://localhost:3000/eecad873-648d-47e8-b86a-31bd77b67847","url":"","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":1,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onHover":"http://localhost:3000/track/hover/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onFocus":"http://localhost:3000/track/focus/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onKeyDown":"http://localhost:3000/track/keydown/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onKeyUp":"http://localhost:3000/track/keyup/56b4fc71-3fba-40ac-94c3-30e8c2c8d549"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","interactionUrl":"http://localhost:3000/track/interaction/56b4fc71-3fba-40ac-94c3-30e8c2c8d549"},"remoteControl":{"focusable":true,"focusOrder":1,"navigationRules":{}}}],"background":{"url":"http://localhost:3000blob:http://localhost:3000/53d6f41b-cf19-4d86-a521-534a55b9e228","type":"image","style":{"scale":1,"position":{"x":50,"y":50}}},"timeline":{"currentTime":0,"isPlaying":false,"duration":30},"tracking":{"enabled":true,"events":["impression","interaction","completion","quartiles"]},"remoteControl":{"enabled":true,"initialFocus":"536aa0b9-74e3-4df6-a97f-9153ecd48eee","navigationMode":"grid"},"fallback":{"enabled":true,"videoUrl":"http://localhost:3000blob:http://localhost:3000/53d6f41b-cf19-4d86-a521-534a55b9e228"}}]]></AdParameters>
+          </Linear>
+          <CreativeExtensions>
+            <CreativeExtension type="AdsmoodInteractive">
+              <InteractiveCreativeData>
+                <![CDATA[{"version":"1.0","type":"CTV-Interactive","platform":"roku","layout":{"aspectRatio":"16:9","videoPosition":{"left":"20px","width":"60%"},"safeZones":{"title":{"top":"5%","height":"15%"},"action":{"bottom":"10%","height":"20%"}}},"elements":[{"id":"536aa0b9-74e3-4df6-a97f-9153ecd48eee","type":"choice","position":{"x":44,"y":45},"size":{"width":1062,"height":679},"content":{"options":[{"id":"stxhpnmph","imageUrl":"blob:http://localhost:3000/4363e1b9-0319-49f6-930d-6e90c84aa37c","videoUrl":"","redirectUrl":"https://www.telecom.com.ar/web/"},{"id":"t0sfh87mg","imageUrl":"blob:http://localhost:3000/61db01b0-3b01-47d0-b61d-ddea6bb45017","videoUrl":"","redirectUrl":"https://www.telecom.com.ar/web/"}],"redirectUrl":"","selectedOption":null},"zIndex":0,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onHover":"http://localhost:3000/track/hover/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onFocus":"http://localhost:3000/track/focus/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onKeyDown":"http://localhost:3000/track/keydown/536aa0b9-74e3-4df6-a97f-9153ecd48eee","onKeyUp":"http://localhost:3000/track/keyup/536aa0b9-74e3-4df6-a97f-9153ecd48eee"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/536aa0b9-74e3-4df6-a97f-9153ecd48eee","interactionUrl":"http://localhost:3000/track/interaction/536aa0b9-74e3-4df6-a97f-9153ecd48eee"},"remoteControl":{"focusable":true,"focusOrder":0,"navigationRules":{}}},{"id":"56b4fc71-3fba-40ac-94c3-30e8c2c8d549","type":"button","position":{"x":1309,"y":606},"size":{"width":200,"height":100},"content":{"image":"blob:http://localhost:3000/eecad873-648d-47e8-b86a-31bd77b67847","url":"","style":{"scale":1,"position":{"x":50,"y":50}}},"zIndex":1,"isVisible":true,"actions":{"onClick":"http://localhost:3000/track/click/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onHover":"http://localhost:3000/track/hover/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onFocus":"http://localhost:3000/track/focus/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onKeyDown":"http://localhost:3000/track/keydown/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","onKeyUp":"http://localhost:3000/track/keyup/56b4fc71-3fba-40ac-94c3-30e8c2c8d549"},"tracking":{"impressionUrl":"http://localhost:3000/track/impression/56b4fc71-3fba-40ac-94c3-30e8c2c8d549","interactionUrl":"http://localhost:3000/track/interaction/56b4fc71-3fba-40ac-94c3-30e8c2c8d549"},"remoteControl":{"focusable":true,"focusOrder":1,"navigationRules":{}}}],"background":{"url":"http://localhost:3000blob:http://localhost:3000/53d6f41b-cf19-4d86-a521-534a55b9e228","type":"image","style":{"scale":1,"position":{"x":50,"y":50}}},"timeline":{"currentTime":0,"isPlaying":false,"duration":30},"tracking":{"enabled":true,"events":["impression","interaction","completion","quartiles"]},"remoteControl":{"enabled":true,"initialFocus":"536aa0b9-74e3-4df6-a97f-9153ecd48eee","navigationMode":"grid"},"fallback":{"enabled":true,"videoUrl":"http://localhost:3000blob:http://localhost:3000/53d6f41b-cf19-4d86-a521-534a55b9e228"}}]]>
+              </InteractiveCreativeData>
+            </CreativeExtension>
+          </CreativeExtensions>
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension type="AdVerification">
+          <VerificationParameters>
+            <![CDATA[{"trackingUrls":{"impression":"http://localhost:3000/track/impression","complete":"http://localhost:3000/track/complete","interaction":"http://localhost:3000/track/interaction"},"platform":"roku"}]]>
+          </VerificationParameters>
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>
